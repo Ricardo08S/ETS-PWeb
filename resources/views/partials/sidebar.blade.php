@@ -6,7 +6,12 @@
                 alt="User Image">
         </div>
         <div class="info">
-            <a href="#" class="d-block">Alexander Pierce</a>
+            @guest
+                <a href="#" class="d-block">User has not logged in</a>
+            @endguest
+            @auth
+                <a href="#" class="d-block">{{ Auth::user()->name }}</a>
+            @endauth
         </div>
     </div>
 

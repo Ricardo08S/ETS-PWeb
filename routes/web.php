@@ -33,29 +33,31 @@ Route::get('/', [IndexController::class, 'dashboard']);
 //     return view('layouts.master');
 // });
 
+Route::group(['middleware' => ['auth']], function () {
 
-// CRUD
+    // CRUD
 
-// Create Data
-// Route that routing to the add data form
-Route::get('/category/create', [CategoriesController::class, 'create']);
-// Route to add data to the database
-Route::post('/category', [CategoriesController::class, 'store']);
+    // Create Data
+    // Route that routing to the add data form
+    Route::get('/category/create', [CategoriesController::class, 'create']);
+    // Route to add data to the database
+    Route::post('/category', [CategoriesController::class, 'store']);
 
-// Read Data
-// Route to display all categories
-Route::get('/category', [CategoriesController::class, 'index']);
-// Route for category details by id
-Route::get('/category/{id}', [CategoriesController::class, 'show']);
+    // Read Data
+    // Route to display all categories
+    Route::get('/category', [CategoriesController::class, 'index']);
+    // Route for category details by id
+    Route::get('/category/{id}', [CategoriesController::class, 'show']);
 
-// Update Data
-// Route to the edit data form with id params
-Route::get('/category/{id}/edit', [CategoriesController::class, 'edit']);
-// Route to update data in the database based on id
-Route::put('/category/{id}', [CategoriesController::class, 'update']);
+    // Update Data
+    // Route to the edit data form with id params
+    Route::get('/category/{id}/edit', [CategoriesController::class, 'edit']);
+    // Route to update data in the database based on id
+    Route::put('/category/{id}', [CategoriesController::class, 'update']);
 
-// Delete Data
-Route::delete('category/{id}', [CategoriesController::class, 'destroy']);
+    // Delete Data
+    Route::delete('category/{id}', [CategoriesController::class, 'destroy']);
+});
 
 // CRUD News
 Route::resource('news', NewsController::class);

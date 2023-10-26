@@ -14,6 +14,7 @@
                         <p class="card-text">{{ Str::limit($item->content, 50) }}</p>
                         <a href="/news/{{ $item->id }}" class="btn btn-primary btn-block">Read More</a>
                         <div class="row my-2">
+                            @auth
                             <div class="col">
                                 <a href="/news/{{ $item->id }}/edit" class="btn btn-warning btn-block">Edit News</a>
                             </div>
@@ -23,8 +24,8 @@
                                     @method('delete')
                                     <input type="submit" value="delete" class="btn btn-danger btn-block">
                                 </form>
-                                {{-- <a href="/news/{{ $item->id }}/edit" class="btn btn-danger btn-block">Delete News</a> --}}
                             </div>
+                            @endauth
                         </div>
                     </div>
                 </div>
